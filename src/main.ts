@@ -7,7 +7,6 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { routes } from "./routes/routes";
-import { env } from "./config/env";
 
 
 const app = fastify();
