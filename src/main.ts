@@ -7,6 +7,7 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { routes } from "./routes/routes";
+import { env } from "./config/env";
 
 
 const app = fastify();
@@ -38,4 +39,6 @@ app.after(()=>{
 
 app
   .listen({ port: 3333 })
-  .then(() => console.log('Server running on http://localhost:3333'))
+  .then(() => {
+    console.log('Servidor rodando em http://localhost:3333')
+  })
