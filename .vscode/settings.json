@@ -1,0 +1,11 @@
+// configuração do Visual Studio Code para formatação automática de arquivos TypeScript
+{
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+
