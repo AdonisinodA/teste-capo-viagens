@@ -11,7 +11,7 @@ export type card = { number: string; cvv: string; expirationDate: string };
 export class CreatePaymentUseCase {
   constructor(private readonly paymentRepository: paymentRepository) {}
 
-  async createPayment(
+  async execute(
     body: CreatePaymentInput
   ): Promise<{ id: number; status: PaymentStatus }> {
     const payment = new PaymentEntity(

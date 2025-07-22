@@ -54,7 +54,7 @@ class PaymentController {
     const paymenteRepository = new paymentRepository(pool);
     const createPaymentUseCase = new CreatePaymentUseCase(paymenteRepository);
 
-    const result = await createPaymentUseCase.createPayment(body);
+    const result = await createPaymentUseCase.execute(body);
     return reply.status(201).send({
       message: {
         id: result.id,

@@ -22,7 +22,7 @@ describe("CreatePaymentUseCase", () => {
   it("deve criar pagamento e retornar id e status", async () => {
     const useCase = new CreatePaymentUseCase(mockRepository as any);
 
-    const result = await useCase.createPayment(fakeBody);
+    const result = await useCase.execute(fakeBody);
 
     expect(mockRepository.create).toHaveBeenCalled();
     expect(result).toHaveProperty("id", 1);
