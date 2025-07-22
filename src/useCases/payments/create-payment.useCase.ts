@@ -1,13 +1,15 @@
+import { QueryResult, ResultSetHeader } from "mysql2";
 import { PaymentEntity } from "../../domain/payment/entities/payment.entity";
 import { CryptoService } from "../../infrastructure/crypto/encrypt.infra";
+import { paymentRepository } from "../../infrastructure/db/respositories/payments/payment.repository";
 import { CreatePaymentInput } from "../../schemas/payments/create-payment.schema";
 
 export type card = { number: string; cvv: string; expirationDate: string };
 
 export class CreatePaymentUseCase {
-  constructor(private readonly paymentRepository: any) {}
+  constructor(private readonly paymentRepository: paymentRepository) {}
 
-  createPayment(body: CreatePaymentInput): Promise<void> {
+  createPayment(body: CreatePaymentInput): Promise<ResultSetHeader> {
     const payment = new PaymentEntity(
       body.method,
       body.amount,
