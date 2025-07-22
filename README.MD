@@ -99,3 +99,42 @@ Armazena os estornos/refunds realizados.
 - Campos `created_at` e `updated_at` facilitam rastrear alterações.
 - Não existe total reembolsado armazenado diretamente. Deve ser calculado somando os `amount` na tabela `refunds` para cada `payment_id`.
 
+# Observação na rota de criar pagamento
+
+## Rota: `POST /payments`
+
+### Descrição
+
+Esta rota cria um pagamento. O payload da requisição deve seguir o schema abaixo.
+
+### Payload esperado
+
+```json
+{
+  "method": "pix" | "credit_card",
+  "amount": number (positivo),
+  "card": { "encryptedData": string } (opcional, obrigatório para credit_card),
+  "buyer": {
+    "name": string,
+    "email": string (formato válido)
+  }
+}
+```
+
+### Campo `card.encryptedData`
+
+Contém os dados do cartão em formato **Base64**, foi a alternativa que optei para imitar uma encriptação de dados.
+
+Para converter JSON para Base64 use esta ferramenta:
+https://codebeautify.org/json-to-base64-converter
+
+Exemplo JSON esperado em base64:
+
+```json
+{
+  "number": "4111111111111111",
+  "cvv": "456",
+  "expirationDate": "03/27"
+}
+```
+
