@@ -15,5 +15,13 @@ export class paymentRepository {
 
     return result;
   }
+
+  async getByID(id: number): Promise<QueryResult> {
+    const query = "SELECT * payments WHERE id = ?";
+
+    const [result] = await this.connection.query(query, id);
+
+    return result;
+  }
 }
 
