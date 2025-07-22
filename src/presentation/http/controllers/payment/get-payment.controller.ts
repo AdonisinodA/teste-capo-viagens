@@ -3,6 +3,7 @@ import { GetPaymentInput } from "../../validations/payments/get-payment.validati
 import { GetPaymentUseCase } from "../../../../application/useCases/payment/get-payment.useCase";
 import pool from "../../../../infra/db/db.infra";
 import { PaymentRepository } from "../../../../infra/db/repositories/payments/payment.repository";
+import { CryptoService } from "../../../../infra/crypto/encrypt.infra";
 
 class GetPaymentController {
   async execute(
@@ -13,6 +14,11 @@ class GetPaymentController {
     const paymentRepository = new PaymentRepository(pool);
     const getPaymentUseCase = new GetPaymentUseCase(paymentRepository);
     const payment = await getPaymentUseCase.execute(params.id);
+    if (payment.type === "CREDIT_CARD") {
+      payment.card_data_decrypt = JSON.parse(
+        CryptoService.decrypt(payment.card_data!)
+      );
+    }
 
     return reply.status(200).send({
       message: {

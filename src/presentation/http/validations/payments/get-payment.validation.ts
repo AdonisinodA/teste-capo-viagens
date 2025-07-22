@@ -1,4 +1,4 @@
-import z from "zod";
+import z, { email } from "zod";
 
 export const getPaymentSchema = z.object({
   id: z.string(),
@@ -8,7 +8,14 @@ export const responseGetpaymentSchema = z.object({
   id: z.number().int(),
   type: z.enum(["PIX", "CREDIT_CARD"]),
   amount: z.number().int(),
-  card_data: z.string(),
+  card_data: z.string().nullable(),
+  card_data_decrypt: z
+    .object({
+      number: z.string(),
+      cvv: z.string(),
+      expirationDate: z.string(),
+    })
+    .optional(),
   created_at: z.date(),
   updated_at: z.date(),
   status: z.enum(["PENDING", "APPROVED", "DECLINED"]),

@@ -17,7 +17,7 @@ export class PaymentRepository {
     return result;
   }
 
-  async getByID(id: string): Promise<QueryResult> {
+  async getByID(id: string): Promise<ResponseGetpayment> {
     const query = "SELECT * FROM payments WHERE id = ?";
 
     const [[result]] = await this.connection.query<
