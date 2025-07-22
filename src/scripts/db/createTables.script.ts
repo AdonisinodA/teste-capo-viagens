@@ -7,6 +7,8 @@ export async function createTables() {
       id INT AUTO_INCREMENT PRIMARY KEY,
       type ENUM('PIX', 'CREDIT_CARD') NOT NULL,
       status ENUM('PENDING', 'APPROVED', 'DECLINED') NOT NULL DEFAULT 'PENDING',
+      buyer_name VARCHAR(255),
+      buyer_email VARCHAR(255),
       amount INT NOT NULL,
       card_data TEXT,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
