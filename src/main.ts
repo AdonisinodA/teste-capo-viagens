@@ -7,6 +7,7 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { routes } from "./routes/routes";
+import { createTables } from "./scripts/db/createTables.script";
 
 const app = fastify();
 
@@ -34,5 +35,9 @@ app.after(() => {
 });
 
 app.listen({ port: 3333 }).then(() => {
-  console.log("Servidor rodando em http://localhost:3333");
+  (async () => {
+    await createTables();
+    console.log("Servidor rodando em http://localhost:3333");
+  })();
 });
+
