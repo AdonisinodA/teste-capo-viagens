@@ -2,7 +2,12 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { createPaymentSchema } from "../../validations/payments/create-payment.validation";
-import paymentController from "../../controllers/payment/create-payment.controller";
+import {
+  getPaymentSchema,
+  responseGetpaymentSchema,
+} from "../../validations/payments/get-payment.validation";
+import createPaymentController from "../../controllers/payment/create-payment.controller";
+import getPaymentController from "../../controllers/payment/get-payment.controller";
 
 // rotas de pagamentos
 export default function paymentsRoutes(app: FastifyInstance) {
@@ -23,7 +28,25 @@ export default function paymentsRoutes(app: FastifyInstance) {
         },
       },
     },
-    paymentController.create
+    createPaymentController.execute
+  );
+
+  // Buscar Pagamento
+  app.withTypeProvider<ZodTypeProvider>().get(
+    "/:id",
+    {
+      schema: {
+        params: getPaymentSchema,
+        response: {
+          200: z.object({
+            message: z.object({
+              result: responseGetpaymentSchema,
+            }),
+          }),
+        },
+      },
+    },
+    getPaymentController.execute
   );
 }
 

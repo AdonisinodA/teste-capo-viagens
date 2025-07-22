@@ -2,14 +2,14 @@ import {
   PaymentEntity,
   PaymentStatus,
 } from "../../../domain/payment/entities/payment.entity";
-import { paymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
 import { FakePaymentGateway } from "../../../infra/gateways/fakePayment.gateway";
 import { CreatePaymentInput } from "../../../presentation/http/validations/payments/create-payment.validation";
 
 export type card = { number: string; cvv: string; expirationDate: string };
 
 export class CreatePaymentUseCase {
-  constructor(private readonly paymentRepository: paymentRepository) {}
+  constructor(private readonly paymentRepository: PaymentRepository) {}
 
   async execute(
     body: CreatePaymentInput

@@ -1,10 +1,10 @@
 import AppError from "../../../common/error/AppError";
-import { paymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
 
 export class GetPaymentUseCase {
-  constructor(private readonly paymentRepository: paymentRepository) {}
+  constructor(private readonly paymentRepository: PaymentRepository) {}
 
-  async execute(id: number) {
+  async execute(id: string) {
     const payment = await this.paymentRepository.getByID(id);
 
     if (!payment) {

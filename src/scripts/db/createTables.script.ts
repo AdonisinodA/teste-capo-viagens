@@ -37,7 +37,6 @@ export async function createTables() {
 }
 
 if (process.argv[2] === "createtables") {
-  console.log(process.argv[2]);
   createTables().then(() => {
     console.log("Tabelas criadas");
     process.exit(0);

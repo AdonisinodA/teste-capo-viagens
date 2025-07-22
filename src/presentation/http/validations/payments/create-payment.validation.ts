@@ -17,7 +17,7 @@ export const createPaymentSchema = z
       })
       .optional(),
     buyer: z.object({
-      name: z.string(),
+      name: z.string().min(5).max(255),
       email: z.email(),
     }),
   })
@@ -35,10 +35,6 @@ export const createPaymentSchema = z
   );
 
 export type CreatePaymentInput = z.infer<typeof createPaymentSchema>;
-
-export const refundPartialSchema = z.object({
-  amount: z.number().positive(),
-});
 
 export class CreatePaymentValidation {
   validStringifyCard(jsonStr: string): boolean {

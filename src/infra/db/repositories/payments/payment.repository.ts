@@ -1,8 +1,9 @@
-import { QueryResult, ResultSetHeader } from "mysql2";
+import { QueryResult, ResultSetHeader, RowDataPacket } from "mysql2";
 import { PaymentEntity } from "../../../../domain/payment/entities/payment.entity";
 import { TPool } from "../../../../types/global";
+import { ResponseGetpayment } from "../../../../presentation/http/validations/payments/get-payment.validation";
 
-export class paymentRepository {
+export class PaymentRepository {
   constructor(private readonly connection: TPool) {}
 
   async create(payment: PaymentEntity): Promise<ResultSetHeader> {
@@ -16,10 +17,12 @@ export class paymentRepository {
     return result;
   }
 
-  async getByID(id: number): Promise<QueryResult> {
-    const query = "SELECT * payments WHERE id = ?";
+  async getByID(id: string): Promise<QueryResult> {
+    const query = "SELECT * FROM payments WHERE id = ?";
 
-    const [result] = await this.connection.query(query, id);
+    const [[result]] = await this.connection.query<
+      (ResponseGetpayment & RowDataPacket[])[]
+    >(query, [id]);
 
     return result;
   }

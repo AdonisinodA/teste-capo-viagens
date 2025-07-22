@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { paymentRepository } from "../../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../../infra/db/repositories/payments/payment.repository";
 import pool from "../../../../infra/db/db.infra";
 import {
   CreatePaymentInput,
@@ -10,8 +10,8 @@ import { CryptoService } from "../../../../infra/crypto/encrypt.infra";
 import { card } from "../../../../domain/payment/entities/payment.entity";
 import { CreatePaymentUseCase } from "../../../../application/useCases/payment/create-payment.useCase";
 
-class PaymentController {
-  async create(
+class CreatePaymentController {
+  async execute(
     request: FastifyRequest<{ Body: CreatePaymentInput }>,
     reply: FastifyReply
   ) {
@@ -51,7 +51,7 @@ class PaymentController {
       delete body.card;
     }
 
-    const paymenteRepository = new paymentRepository(pool);
+    const paymenteRepository = new PaymentRepository(pool);
     const createPaymentUseCase = new CreatePaymentUseCase(paymenteRepository);
 
     const result = await createPaymentUseCase.execute(body);
@@ -65,5 +65,5 @@ class PaymentController {
   }
 }
 
-export default new PaymentController();
+export default new CreatePaymentController();
 
