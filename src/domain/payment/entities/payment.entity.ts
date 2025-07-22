@@ -5,7 +5,14 @@ export type card = {
   cvv: string;
   expirationDate: string;
 };
-export type PaymentStatus = "PENDING" | "APPROVED" | "DECLINED";
+export const PaymentStatus = {
+  PENDING: "PENDING",
+  APPROVED: "APPROVED",
+  DECLINED: "DECLINED",
+} as const;
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus];
+
 export class PaymentEntity {
   constructor(
     public readonly type: PaymentMethod,
