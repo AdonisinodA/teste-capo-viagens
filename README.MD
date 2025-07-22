@@ -1,5 +1,59 @@
 # Como inicializar o Projeto
 
+## Como rodar o projeto
+
+1. **Pré-requisitos**
+   - Node.js 18+
+   - Yarn ou npm
+   - Docker
+
+2. **Subindo o banco de dados**
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   - Aguarde o MySQL inicializar.
+   - As tabelas do banco são criadas ao inicializar a aplicação no passo (5), mas também é possível executar o script a parte caso deseje com:
+     `npx tsx src/scripts/db/createTables.script.ts createtables`
+
+3. **Instalação**
+
+   ```bash
+   yarn install
+   # ou
+   npm install
+   ```
+
+4. **Configuração**
+   - Crie o arquivo `.env` e preencha as variáveis necessárias:
+     ```
+     ENCRYPTION_KEY=chave-secreta
+     DB_HOST=localhost
+     DB_PORT=3306
+     DB_USER=user
+     DB_PASSWORD=password
+     DB_DATABASE=payments
+     ```
+
+5. **Rodando o servidor**
+
+   ```bash
+   yarn start
+   # ou
+   npm start
+   ```
+
+6. **Acessando a documentação**
+   - Acesse `http://localhost:3000/docs` para visualizar o Swagger.
+
+7. **Rodando os testes**
+   ```bash
+   yarn test
+   # ou
+   npm test
+   ```
+
 # Banco de Dados
 
 ## Tabelas
