@@ -62,14 +62,17 @@
 
 Armazena os pagamentos registrados.
 
-| Coluna     | Tipo                           | Descrição                                                            |
-| ---------- | ------------------------------ | -------------------------------------------------------------------- |
-| id         | INT AUTO_INCREMENT PRIMARY KEY | Identificador do pagamento.                                          |
-| type       | ENUM('PIX', 'CREDIT_CARD')     | Tipo de pagamento.                                                   |
-| amount     | INT NOT NULL                   | Valor do pagamento multiplicado por 100. Exemplo: 1000.23 -> 100023. |
-| card_data  | TEXT                           | Dados do cartão (criptografados).                                    |
-| created_at | TIMESTAMP                      | Data/hora de criação.                                                |
-| updated_at | TIMESTAMP                      | Data/hora da última atualização.                                     |
+| Coluna      | Tipo                                    | Descrição                                                            |
+| ----------- | --------------------------------------- | -------------------------------------------------------------------- |
+| id          | INT AUTO_INCREMENT PRIMARY KEY          | Identificador do pagamento.                                          |
+| type        | ENUM('PIX', 'CREDIT_CARD')              | Tipo de pagamento.                                                   |
+| amount      | INT NOT NULL                            | Valor do pagamento multiplicado por 100. Exemplo: 1000.23 -> 100023. |
+| card_data   | TEXT                                    | Dados do cartão (criptografados).                                    |
+| type        | ENUM('PENDING', 'APPROVED', 'DECLINED') | status do pagamento.                                                 |
+| buyer_name  | VARCHAR(255)                            | Nome do comprador.                                                   |
+| buyer_email | VARCHAR(255)                            | Email do pagador.                                                    |
+| created_at  | TIMESTAMP                               | Data/hora de criação.                                                |
+| updated_at  | TIMESTAMP                               | Data/hora da última atualização.                                     |
 
 ---
 

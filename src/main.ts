@@ -6,7 +6,7 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from "fastify-type-provider-zod";
-import { routes } from "./routes/routes";
+import { routes } from "./presentation/http/routes/routes";
 import { createTables } from "./scripts/db/createTables.script";
 
 const app = fastify();

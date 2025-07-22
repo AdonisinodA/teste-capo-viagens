@@ -1,4 +1,4 @@
-import pool from "../../infrastructure/db/db.infra";
+import pool from "../../infra/db/db.infra";
 
 export async function createTables() {
   try {
@@ -6,6 +6,7 @@ export async function createTables() {
     CREATE TABLE IF NOT EXISTS payments (
       id INT AUTO_INCREMENT PRIMARY KEY,
       type ENUM('PIX', 'CREDIT_CARD') NOT NULL,
+      status ENUM('PENDING', 'APPROVED', 'DECLINED') NOT NULL DEFAULT 'PENDING',
       amount INT NOT NULL,
       card_data TEXT,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
