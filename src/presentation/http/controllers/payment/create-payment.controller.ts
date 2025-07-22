@@ -8,7 +8,7 @@ import {
 import AppError from "../../../../common/error/AppError";
 import { CryptoService } from "../../../../infra/crypto/encrypt.infra";
 import { card } from "../../../../domain/payment/entities/payment.entity";
-import { CreatePaymentUseCase } from "../../../../application/useCases/payments/create-payment.useCase";
+import { CreatePaymentUseCase } from "../../../../application/useCases/payment/create-payment.useCase";
 
 class PaymentController {
   async create(
