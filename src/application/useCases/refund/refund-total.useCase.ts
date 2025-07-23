@@ -36,7 +36,7 @@ export class RefundTotalUseCase {
     if (Number(canAddRefunt.remaining_amount) > 0) {
       const refund = new RefundEntity(
         payment_id,
-        canAddRefunt.remaining_amount,
+        canAddRefunt.remaining_amount / 100,
         typeRefund.total
       );
 
