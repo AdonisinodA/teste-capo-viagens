@@ -1,19 +1,22 @@
 # Como inicializar o Projeto
 
-## 📁 Estrutura de Pastas
+## Estrutura de Pastas
 
+```bash
 src/
 │
-├── 📂 application # Casos de uso (UseCases) e regras da aplicação
-├── 📂 common # Utilitários, helpers, classes de erro etc.
-├── 📂 config # Configurações globais
-├── 📂 domain # Entidades e regras de domínio
-├── 📂 infra # Implementações externas (DB, APIs, etc.)
-├── 📂 presentation # Camada HTTP (controllers, rotas, validações)
-├── 📂 scripts # Scripts auxiliares
-├── 📂 test # Testes unitários
-├── 📂 types # Tipagens globais
-└── 📄 main.ts # Ponto de entrada da aplicação
+├── 📂 application      # Casos de uso (UseCases) e regras da aplicação
+├── 📂 common           # Utilitários, helpers, classes de erro etc.
+├── 📂 config           # Configurações globais
+├── 📂 domain           # Entidades e regras de domínio
+├── 📂 infra            # Implementações externas (DB, APIs, etc.)
+├── 📂 presentation     # Camada HTTP (controllers, rotas, validações)
+├── 📂 scripts          # Scripts auxiliares
+├── 📂 test             # Testes unitários
+├── 📂 types            # Tipagens globais
+└── 📄 main.ts          # Ponto de entrada da aplicação
+
+```
 
 ## Como rodar o projeto
 
