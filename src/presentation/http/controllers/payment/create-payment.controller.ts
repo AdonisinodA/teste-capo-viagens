@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { PaymentRepository } from "../../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../../infra/db/repositories/payment/payment.repository";
 import pool from "../../../../infra/db/db.infra";
 import {
   CreatePaymentInput,

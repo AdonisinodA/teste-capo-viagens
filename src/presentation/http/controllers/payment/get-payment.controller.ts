@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { GetPaymentInput } from "../../validations/payments/get-payment.validation";
 import { GetPaymentUseCase } from "../../../../application/useCases/payment/get-payment.useCase";
 import pool from "../../../../infra/db/db.infra";
-import { PaymentRepository } from "../../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../../infra/db/repositories/payment/payment.repository";
 import { CryptoService } from "../../../../infra/crypto/encrypt.infra";
 
 class GetPaymentController {

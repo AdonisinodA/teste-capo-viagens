@@ -1,5 +1,5 @@
 import AppError from "../../../common/error/AppError";
-import { PaymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../infra/db/repositories/payment/payment.repository";
 
 export class GetPaymentUseCase {
   constructor(private readonly paymentRepository: PaymentRepository) {}

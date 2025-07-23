@@ -2,7 +2,7 @@ import {
   PaymentEntity,
   PaymentStatus,
 } from "../../../domain/payment/entities/payment.entity";
-import { PaymentRepository } from "../../../infra/db/repositories/payments/payment.repository";
+import { PaymentRepository } from "../../../infra/db/repositories/payment/payment.repository";
 import { FakePaymentGateway } from "../../../infra/gateways/fakePayment.gateway";
 import { CreatePaymentInput } from "../../../presentation/http/validations/payments/create-payment.validation";
 
