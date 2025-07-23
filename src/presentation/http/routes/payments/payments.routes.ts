@@ -8,6 +8,11 @@ import {
 } from "../../validations/payments/get-payment.validation";
 import createPaymentController from "../../controllers/payment/create-payment.controller";
 import getPaymentController from "../../controllers/payment/get-payment.controller";
+import {
+  bodyRefundPartialSchema,
+  paramsRefundPartialSchema,
+} from "../../validations/payments/refund-partial.validation";
+import refundPartialController from "../../controllers/payment/refund-partial.payment.controller";
 
 // rotas de pagamentos
 export default function paymentsRoutes(app: FastifyInstance) {
@@ -47,6 +52,23 @@ export default function paymentsRoutes(app: FastifyInstance) {
       },
     },
     getPaymentController.execute
+  );
+
+  // Buscar Pagamento
+  app.withTypeProvider<ZodTypeProvider>().post(
+    "/:id/refund-partial",
+    {
+      schema: {
+        body: bodyRefundPartialSchema,
+        params: paramsRefundPartialSchema,
+        response: {
+          200: z.object({
+            message: z.string(),
+          }),
+        },
+      },
+    },
+    refundPartialController.execute
   );
 }
 
