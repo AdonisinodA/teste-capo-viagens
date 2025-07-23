@@ -7,7 +7,7 @@ import {
 } from "../../validations/payments/create-payment.validation";
 import AppError from "../../../../common/error/AppError";
 import { CryptoService } from "../../../../infra/crypto/encrypt.infra";
-import { card } from "../../../../domain/payment/entities/payment.entity";
+import { card } from "../../../../domain/payment/entity/payment.entity";
 import { CreatePaymentUseCase } from "../../../../application/useCases/payment/create-payment.useCase";
 
 class CreatePaymentController {

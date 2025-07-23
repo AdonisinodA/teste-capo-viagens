@@ -1,5 +1,5 @@
 import { CreatePaymentUseCase } from "../../../../application/useCases/payment/create-payment.useCase";
-import { PaymentStatus } from "../../../../domain/payment/entities/payment.entity";
+import { PaymentStatus } from "../../../../domain/payment/entity/payment.entity";
 import { CreatePaymentInput } from "../../../../presentation/http/validations/payments/create-payment.validation";
 
 const mockRepository = {

@@ -1,4 +1,4 @@
-import { PaymentEntity } from "../../domain/payment/entities/payment.entity";
+import { PaymentEntity } from "../../domain/payment/entity/payment.entity";
 
 export class FakePaymentGateway {
   async process(payment: PaymentEntity): Promise<PaymentEntity> {

@@ -5,7 +5,7 @@ export async function createTables() {
     const createPayments = `
     CREATE TABLE IF NOT EXISTS payments (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      type ENUM('PIX', 'CREDIT_CARD') NOT NULL,
+      type ENUM('pix', 'credit_card') NOT NULL,
       status ENUM('PENDING', 'APPROVED', 'DECLINED') NOT NULL DEFAULT 'PENDING',
       buyer_name VARCHAR(255),
       buyer_email VARCHAR(255),
@@ -21,7 +21,7 @@ export async function createTables() {
       id INT AUTO_INCREMENT PRIMARY KEY,
       payment_id INT NOT NULL,
       amount INT NOT NULL,
-      refund_type ENUM('TOTAL', 'PARTIAL') NOT NULL,
+      refund_type ENUM('total', 'partial') NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       FOREIGN KEY (payment_id) REFERENCES payments(id)

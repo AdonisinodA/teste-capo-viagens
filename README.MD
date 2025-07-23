@@ -83,7 +83,7 @@ Armazena os pagamentos registrados.
 | Coluna      | Tipo                                    | Descrição                                                            |
 | ----------- | --------------------------------------- | -------------------------------------------------------------------- |
 | id          | INT AUTO_INCREMENT PRIMARY KEY          | Identificador do pagamento.                                          |
-| type        | ENUM('PIX', 'CREDIT_CARD')              | Tipo de pagamento.                                                   |
+| type        | ENUM('pix', 'credit_card')              | Tipo de pagamento.                                                   |
 | amount      | INT NOT NULL                            | Valor do pagamento multiplicado por 100. Exemplo: 1000.23 -> 100023. |
 | card_data   | TEXT                                    | Dados do cartão (criptografados).                                    |
 | type        | ENUM('PENDING', 'APPROVED', 'DECLINED') | status do pagamento.                                                 |
@@ -103,7 +103,7 @@ Armazena os estornos/refunds realizados.
 | id          | INT AUTO_INCREMENT PRIMARY KEY | Identificador do refund.                                          |
 | payment_id  | INT NOT NULL                   | ID do pagamento associado.                                        |
 | amount      | INT NOT NULL                   | Valor do refund multiplicado por 100. Exemplo: 1000.23 -> 100023. |
-| refund_type | ENUM('TOTAL', 'PARTIAL')       | Tipo do estorno (total ou parcial).                               |
+| refund_type | ENUM('total', 'partial')       | Tipo do estorno (total ou parcial).                               |
 | created_at  | TIMESTAMP                      | Data/hora de criação.                                             |
 | updated_at  | TIMESTAMP                      | Data/hora da última atualização.                                  |
 

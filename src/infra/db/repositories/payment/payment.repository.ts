@@ -1,5 +1,5 @@
 import { QueryResult, ResultSetHeader, RowDataPacket } from "mysql2";
-import { PaymentEntity } from "../../../../domain/payment/entities/payment.entity";
+import { PaymentEntity } from "../../../../domain/payment/entity/payment.entity";
 import { TPool } from "../../../../types/global";
 import { ResponseGetpayment } from "../../../../presentation/http/validations/payments/get-payment.validation";
 

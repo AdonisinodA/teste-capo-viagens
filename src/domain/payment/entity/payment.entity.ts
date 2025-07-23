@@ -1,3 +1,5 @@
+import { typePayment } from "../enum/payment.enum";
+
 export type PaymentMethod = "pix" | "credit_card";
 export type buyer = { name: string; email: string };
 export type card = {
@@ -21,7 +23,9 @@ export class PaymentEntity {
     public readonly buyer_email?: buyer["email"],
     public card_data?: string,
     public status: PaymentStatus = "PENDING"
-  ) {}
+  ) {
+    this.amount = amount * 100;
+  }
 
   public deleteCardData() {
     delete this.card_data;

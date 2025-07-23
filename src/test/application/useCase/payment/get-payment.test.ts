@@ -1,5 +1,5 @@
 import { GetPaymentUseCase } from "../../../../application/useCases/payment/get-payment.useCase";
-import { PaymentEntity } from "../../../../domain/payment/entities/payment.entity";
+import { PaymentEntity } from "../../../../domain/payment/entity/payment.entity";
 
 const mockRepository = {
   getByID: jest.fn(),

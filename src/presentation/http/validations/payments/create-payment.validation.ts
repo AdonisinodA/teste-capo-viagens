@@ -1,6 +1,6 @@
 import { z } from "zod";
 import AppError from "../../../../common/error/AppError";
-import { card } from "../../../../domain/payment/entities/payment.entity";
+import { card } from "../../../../domain/payment/entity/payment.entity";
 const cardSchema = z.object({
   number: z.string(),
   cvv: z.string(),

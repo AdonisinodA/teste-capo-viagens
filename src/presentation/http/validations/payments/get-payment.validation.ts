@@ -6,7 +6,7 @@ export const getPaymentSchema = z.object({
 
 export const responseGetpaymentSchema = z.object({
   id: z.number().int(),
-  type: z.enum(["PIX", "CREDIT_CARD"]),
+  type: z.enum(["pix", "credit_card"]),
   amount: z.number().int(),
   card_data: z.string().nullable(),
   card_data_decrypt: z

@@ -14,7 +14,7 @@ class GetPaymentController {
     const paymentRepository = new PaymentRepository(pool);
     const getPaymentUseCase = new GetPaymentUseCase(paymentRepository);
     const payment = await getPaymentUseCase.execute(params.id);
-    if (payment.type === "CREDIT_CARD") {
+    if (payment.type === "credit_card") {
       payment.card_data_decrypt = JSON.parse(
         CryptoService.decrypt(payment.card_data!)
       );
