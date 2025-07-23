@@ -3,6 +3,7 @@ import { PaymentEntity } from "../../../../domain/payment/entity/payment.entity"
 
 const mockRepository = {
   getByID: jest.fn(),
+  getInfoRefund: jest.fn(),
 };
 
 describe("GetPaymentUseCase", () => {
@@ -12,9 +13,9 @@ describe("GetPaymentUseCase", () => {
 
     const useCase = new GetPaymentUseCase(mockRepository as any);
 
-    const result = await useCase.execute("123");
+    const { payment } = await useCase.execute("123");
 
-    expect(result).toBe(fakePayment);
+    expect(payment).toBe(fakePayment);
     expect(mockRepository.getByID).toHaveBeenCalledWith("123");
   });
 
