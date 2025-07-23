@@ -19,6 +19,7 @@ class GetPaymentController {
         CryptoService.decrypt(payment.card_data!)
       );
     }
+    payment.amount = payment.amount / 100;
 
     return reply.status(200).send({
       message: {
