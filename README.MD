@@ -1,6 +1,4 @@
-# Como inicializar o Projeto
-
-## Estrutura de Pastas
+# Estrutura de Pastas
 
 ```bash
 src/
@@ -18,7 +16,7 @@ src/
 
 ```
 
-## Como rodar o projeto
+# Como inicializar o Projeto
 
 1. **Pré-requisitos**
    - Node.js 18+
