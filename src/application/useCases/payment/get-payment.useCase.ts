@@ -10,8 +10,9 @@ export class GetPaymentUseCase {
     if (!payment) {
       AppError("Pagamento não encontrado.", 404);
     }
+    const refund = await this.paymentRepository.getInfoRefund(id);
 
-    return payment;
+    return { payment, refund };
   }
 }
 

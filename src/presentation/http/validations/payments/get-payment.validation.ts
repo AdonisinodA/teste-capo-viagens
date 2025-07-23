@@ -7,8 +7,10 @@ export const getPaymentSchema = z.object({
 export const responseGetpaymentSchema = z.object({
   id: z.number().int(),
   type: z.enum(["pix", "credit_card"]),
-  amount: z.float64(),
-  card_data: z.string().nullable(),
+  payment_amount: z.float64(),
+  total_refunded: z.float64(),
+  remaining_amount: z.float64(),
+  card_data: z.string(),
   card_data_decrypt: z
     .object({
       number: z.string(),
