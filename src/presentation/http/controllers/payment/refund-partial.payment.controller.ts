@@ -7,6 +7,7 @@ import { PaymentRepository } from "../../../../infra/db/repositories/payment/pay
 import pool from "../../../../infra/db/db.infra";
 import { RefundRepository } from "../../../../infra/db/repositories/refund/refund.repository";
 import { RefundPartialUseCase } from "../../../../application/useCases/refund/refund-partial.useCase";
+import { FakePaymentGateway } from "../../../../infra/gateways/fakePayment.gateway";
 
 class RefundPartialController {
   async execute(
@@ -20,10 +21,11 @@ class RefundPartialController {
 
     const paymentRepository = new PaymentRepository(pool);
     const refundRepository = new RefundRepository(pool);
-
+    const paymentGateway = new FakePaymentGateway();
     const refundPartialUseCase = new RefundPartialUseCase(
       refundRepository,
-      paymentRepository
+      paymentRepository,
+      paymentGateway
     );
 
     await refundPartialUseCase.execute(params.id, body.amount);

@@ -8,7 +8,8 @@ import { FakePaymentGateway } from "../../../infra/gateways/fakePayment.gateway"
 export class RefundPartialUseCase {
   constructor(
     private readonly refundRepository: RefundRepository,
-    private readonly paymentRepository: PaymentRepository
+    private readonly paymentRepository: PaymentRepository,
+    private readonly paymentGateway: FakePaymentGateway
   ) {}
 
   async execute(payment_id: string, amountRefund: number) {
@@ -30,9 +31,8 @@ export class RefundPartialUseCase {
       typeRefund.partial
     );
     // chamada fake ao gateway de pagamento para saber se é possível reembolsar
-    const fakePaymentGateway = new FakePaymentGateway();
 
-    const canAddRefunt = await fakePaymentGateway.refund(
+    const canAddRefunt = await this.paymentGateway.refund(
       this.paymentRepository,
       refund.payment_id,
       refund.amount
@@ -44,7 +44,7 @@ export class RefundPartialUseCase {
         400
       );
     } else if (!canAddRefunt.canADD) {
-      AppError(`Não é possível reembolsar o neste pagamento.`, 400);
+      AppError(`Não é possível reembolsar este pagamento.`, 400);
     }
 
     await this.refundRepository.create(refund);
