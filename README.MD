@@ -72,6 +72,8 @@ src/
 
 # Banco de Dados
 
+No banco de dados, optei por criar duas tabelas (**payments** e **refunds**) por uma questão de boa prática de normalização. Mesmo que o cenário não seja real, separar os dados permite armazenar informações importantes, como o valor e a data de cada reembolso realizado, facilitando consultas e mantendo o histórico organizado.
+
 ## Tabelas
 
 ### payments
@@ -109,13 +111,11 @@ Armazena os estornos/refunds realizados.
 
 ---
 
-## Observações
+### Observações
 
 - Valores monetários são armazenados como **inteiros multiplicados por 100** para evitar problemas de arredondamento.
-- Campos `created_at` e `updated_at` facilitam rastrear alterações.
-- Não existe total reembolsado armazenado diretamente. Deve ser calculado somando os `amount` na tabela `refunds` para cada `payment_id`.
 
-# Observação na rota de criar pagamento
+# Observação na rota de criar pagamento (CRIPTOGRAFIA)
 
 ## Rota: `POST /payments`
 
@@ -139,7 +139,9 @@ Esta rota cria um pagamento. O payload da requisição deve seguir o schema abai
 
 ### Campo `card.encryptedData`
 
-Contém os dados do cartão em formato **Base64**, foi a alternativa que optei para imitar uma encriptação de dados.
+Para encriptar no lado cliente eu tinha duas alternativas em mente, criar uma função para encriptar os dados com uma **chave pública** e manter uma **chave privada** no servidor ou o base64, optei pelo o base64 pois acredito que facilitaria no teste
+
+Contém os dados do cartão em formato **Base64**
 
 Para converter JSON para Base64 use esta ferramenta:
 https://codebeautify.org/json-to-base64-converter
@@ -153,4 +155,6 @@ Exemplo JSON esperado em base64:
   "expirationDate": "03/27"
 }
 ```
+
+Em `infra/crypto` possui os métodos de encriptar e desencriptar fake, em um cenário real optaria por **chave pública/privada**
 
