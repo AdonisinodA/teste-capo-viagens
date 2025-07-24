@@ -1,3 +1,11 @@
+# Checklist
+
+- [x] Clean Architecture
+- [x] Validação com Zod
+- [x] Documentação Swagger automática
+- [x] Criptografia simulada (fakeEncrypt/fakeDecrypt)
+- [x] Testes unitários para cada rota/caso de uso
+
 # Estrutura de Pastas
 
 ```bash
