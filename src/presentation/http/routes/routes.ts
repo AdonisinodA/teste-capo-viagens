@@ -6,7 +6,7 @@ export function routes(app: FastifyInstance) {
   app.register(paymentsRoutes, { prefix: "/payments" });
 
   app.setErrorHandler((error, request, reply) => {
-    console.log("🚀 ~ app.setErrorHandler ~ error:", error);
+    console.error(error);
     if (error.statusCode === 500 || !error.statusCode) {
       reply.status(500).send({
         message: "Internal Server Error",
