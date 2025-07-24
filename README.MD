@@ -39,7 +39,10 @@ src/
 
    - Aguarde o MySQL inicializar.
    - As tabelas do banco são criadas ao inicializar a aplicação no passo (5), mas também é possível executar o script a parte caso deseje com:
-     `npx tsx src/scripts/db/createTables.script.ts createtables`
+
+     com npm: `npx tsx src/scripts/db/createTables.script.ts createtables`
+
+     com yarn: `yarn dlx tsx src/scripts/db/createTables.script.ts createtables`
 
 3. **Instalação**
 
@@ -69,7 +72,7 @@ src/
    ```
 
 6. **Acessando a documentação**
-   - Acesse `http://localhost:3000/docs` para visualizar o Swagger.
+   - Acesse `http://localhost:3333/docs` para visualizar o Swagger.
 
 7. **Rodando os testes**
    ```bash
